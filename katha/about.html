@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>About Us — KATHA</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+<link rel="stylesheet" href="css/main.css"/>
+<link rel="stylesheet" href="css/about.css"/>
+</head>
+<body>
+
+<div class="top-bar">✦ &nbsp; Free shipping on orders over ₱1,500 &nbsp;·&nbsp; Handcrafted with love in the Philippines &nbsp; ✦</div>
+
+<nav>
+  <a class="nav-logo" href="index.html">
+    <div>
+      <img src="images/katha.png" class="logo-img" alt="KATHA Logo">
+      <span class="logo-name">KATHA</span>
+      <span class="logo-tagline">Handmade Crafts &amp; Artisanry</span>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="shop.html">Shop</a></li>
+    <li><a href="about.html" class="active">About</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <div class="nav-actions">
+    <div class="nav-search">
+      <i class="fas fa-search"></i>
+      <input type="text" placeholder="Search crafts…"/>
+    </div>
+    <button class="cart-btn" onclick="toggleDrawer()">
+      <i class="fas fa-shopping-bag"></i>
+      <span class="cart-count" id="cartCount">0</span>
+    </button>
+  </div>
+</nav>
+
+<div class="about-hero">
+  <div class="about-hero-waves"></div>
+  <div class="wrap about-hero-content">
+    <h1>Our Story</h1>
+    <p>KATHA was born from the belief that every handmade thing carries a part of the maker's soul — and that these stories deserve to be shared.</p>
+  </div>
+</div>
+
+<section class="about-story">
+  <div class="wrap">
+    <div class="about-story-grid">
+      <div class="about-story-text">
+        <h2>Where KATHA Began</h2>
+        <p>The "KATHA Project" was created by three innovative students from Bicol University Polangui as a showcase of their creativity and dedication to artisan craft. What started as a class project quickly evolved into a platform to explore and share unique handmade creations that reflect their skills and imagination.</p>
+        <p>Through this project, the students demonstrate how traditional techniques and modern ideas can merge, bringing fresh perspectives to design and craftsmanship. Each creation tells a story of creativity, teamwork, and learning.</p>
+        <p>Today, the project highlights a range of handcrafted works — from woven items to decorative pieces — celebrating the talent and vision of young artisans in the Bicol region.</p>
+        <a href="contact.html" class="btn-primary" style="margin-top:10px;">Get in Touch</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="about-values">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="section-eyebrow">What We Stand For</span>
+      <h2 class="section-title">Our Values</h2>
+    </div>
+    <div class="values-grid">
+      <div class="value-card"><div class="value-icon"><i class="fas fa-hands"></i></div><div class="value-title">Handmade, Always</div><p class="value-desc">No machines. No mass production. Every item is made entirely by hand, carrying the unique fingerprint of its maker.</p></div>
+      <div class="value-card"><div class="value-icon"><i class="fas fa-leaf"></i></div><div class="value-title">Sustainably Sourced</div><p class="value-desc">We use only natural, locally-sourced materials — rattan, abaca, shells, clay — harvested responsibly to protect our environment.</p></div>
+      <div class="value-card"><div class="value-icon"><i class="fas fa-heart"></i></div><div class="value-title">Artisan First</div><p class="value-desc">Fair wages, fair trade, and fair recognition. Every artisan behind KATHA is credited, compensated, and celebrated.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="artisan-section">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="section-eyebrow">Meet the Makers</span>
+      <h2 class="section-title">Our Artisans</h2>
+      <p class="section-sub">The hands behind every KATHA piece.</p>
+    </div>
+    <div class="artisan-grid">
+      <div class="artisan-card">
+        <img class="artisan-img" src="images/Irish.jpg" alt="Irish"/>
+        <div class="artisan-name">Irish Jane Fedelino</div>
+        <div class="artisan-craft">Apud, Libon, Albay</div>
+      </div>
+      <div class="artisan-card">
+        <img class="artisan-img" src="images/Joy.jpg" alt="Luz"/>
+        <div class="artisan-name">Joy Boragay</div>
+        <div class="artisan-craft">Pantao, Libon, Albay</div>
+      </div>
+      <div class="artisan-card">
+        <img class="artisan-img" src="images/Mitch.jpg" alt="Mang Ben"/>
+        <div class="artisan-name">Mitch Loria</div>
+        <div class="artisan-craft">Clay &amp; Pioduran, Albay</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-bottom"><span>© 2025 KATHA Handmade Crafts. All rights reserved.</span><span>Privacy Policy &nbsp;·&nbsp; Terms of Service</span></div>
+  </div>
+</footer>
+
+<!-- CART DRAWER -->
+<div class="cart-overlay" id="cartOverlay" onclick="toggleDrawer()"></div>
+<div class="cart-drawer" id="cartDrawer">
+  <div class="cart-head"><div><h3>Your Bag</h3></div><button class="close-cart" onclick="toggleDrawer()"><i class="fas fa-times"></i></button></div>
+  <div class="cart-drawer-items" id="drawerItems"><div class="cart-drawer-empty" id="drawerEmpty"><i class="fas fa-shopping-bag"></i><p>Your bag is empty.</p></div></div>
+  <div class="cart-drawer-foot">
+    <div class="cdf-row"><span>Subtotal</span><span id="drawerSubtotal">₱0</span></div>
+    <div class="cdf-row"><span>Shipping</span><span id="drawerShipping">₱0</span></div>
+    <div class="cdf-total"><span>Total</span><span id="drawerTotal">₱0</span></div>
+    <button class="cdf-checkout" onclick="window.location.href='cart.html'">View Full Cart</button>
+    <button class="cdf-view-cart" onclick="toggleDrawer()">Continue Shopping</button>
+  </div>
+</div>
+
+<div class="toast" id="toast"><i class="fas fa-check-circle"></i><span id="toastMsg"></span></div>
+
+<script src="js/products.js"></script>
+<script src="js/cart.js"></script>
+<script src="js/ui.js"></script>
+</body>
+</html>

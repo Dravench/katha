@@ -1,0 +1,82 @@
+/* ════════════════════════════
+   KATHA — shop.css
+════════════════════════════ */
+.shop-hero { background:var(--olive-dark); padding:60px 0; position:relative; overflow:hidden; }
+.shop-hero-waves { position:absolute; inset:0; opacity:0.05; background:repeating-linear-gradient(-45deg,var(--gold) 0px,transparent 1px,transparent 18px,var(--gold) 19px,transparent 20px,transparent 38px); }
+.shop-hero-content { position:relative; z-index:2; text-align:center; }
+.shop-hero h1 { font-family:"Playfair Display",serif; font-size:clamp(2rem,3vw,2.8rem); color:var(--white); margin-bottom:10px; }
+.shop-hero p { font-family:"Cormorant Garamond",serif; font-size:1.1rem; color:var(--brown-soft); font-style:italic; }
+
+.shop-body { padding:60px 0; }
+.shop-layout { display:grid; grid-template-columns:240px 1fr; gap:40px; align-items:start; }
+.sidebar { background:var(--cream); border-radius:10px; padding:28px; border:1px solid var(--brown-soft); position:sticky; top:100px; }
+.sidebar-section { margin-bottom:28px; padding-bottom:28px; border-bottom:1px solid rgba(212,201,176,0.5); }
+.sidebar-section:last-child { margin-bottom:0; padding-bottom:0; border-bottom:none; }
+.sidebar-title { font-family:"Playfair Display",serif; font-size:0.95rem; color:var(--olive-dark); margin-bottom:14px; letter-spacing:1px; }
+.sidebar label { display:flex; align-items:center; gap:9px; font-size:0.8rem; color:var(--olive); cursor:pointer; margin-bottom:8px; transition:color .2s; }
+.sidebar label:hover { color:var(--olive-dark); }
+.sidebar input[type=checkbox] { accent-color:var(--green); width:14px; height:14px; cursor:pointer; }
+.price-range { width:100%; accent-color:var(--green); cursor:pointer; }
+.price-display { display:flex; justify-content:space-between; font-size:0.75rem; color:var(--olive-mid); margin-top:8px; }
+
+.shop-top-bar { display:flex; align-items:center; justify-content:space-between; margin-bottom:26px; flex-wrap:wrap; gap:12px; }
+.shop-result-count { font-size:0.8rem; color:var(--olive-mid); letter-spacing:0.5px; }
+.shop-sort { display:flex; align-items:center; gap:10px; font-size:0.78rem; color:var(--olive-mid); }
+.shop-sort select { border:1.5px solid var(--brown-soft); background:var(--pearl); color:var(--olive); padding:7px 12px; border-radius:4px; font-family:"Jost",sans-serif; font-size:0.78rem; outline:none; cursor:pointer; }
+.filter-tags { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:22px; }
+.filter-tag { background:rgba(78,140,78,0.12); border:1px solid rgba(78,140,78,0.3); color:var(--green); font-size:0.7rem; letter-spacing:1px; padding:4px 12px; border-radius:20px; display:flex; align-items:center; gap:6px; cursor:pointer; }
+.filter-tag i { font-size:0.6rem; }
+.product-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
+
+@media(max-width:1024px) {
+  .shop-layout { grid-template-columns:1fr; }
+  .sidebar { position:static; }
+  .product-grid { grid-template-columns:repeat(2,1fr); }
+}
+@media(max-width:640px) {
+  .product-grid { grid-template-columns:1fr; }
+}
+.nav-logo > div {
+  display: flex;
+  align-items: center; /* vertically centers logo + text */
+  gap: 10px; /* space between image and text */
+}
+
+.logo-img {
+  height: 50px; /* adjust to desired size */
+  width: auto;
+}
+
+.logo-name {
+  font-weight: 700;
+  font-size: 1.3rem;
+  line-height: 1;
+}
+
+.logo-tagline {
+  font-size: 0.8rem;
+  color: #555;
+  line-height: 1;
+}
+.nav-logo > div {
+  display: flex;
+  align-items: center; /* vertically centers logo + text */
+  gap: 10px; /* space between image and text */
+}
+
+.logo-img {
+  height: 50px; /* adjust to desired size */
+  width: auto;
+}
+
+.logo-name {
+  font-weight: 700;
+  font-size: 1.3rem;
+  line-height: 1;
+}
+
+.logo-tagline {
+  font-size: 0.8rem;
+  color: #555;
+  line-height: 1;
+}

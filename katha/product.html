@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Product — KATHA</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+<link rel="stylesheet" href="css/main.css"/>
+<link rel="stylesheet" href="css/product.css"/>
+</head>
+<body>
+
+<div class="top-bar">✦ &nbsp; Free shipping on orders over ₱1,500 &nbsp;·&nbsp; Handcrafted with love in the Philippines &nbsp; ✦</div>
+
+<nav>
+  <a class="nav-logo" href="index.html">
+     <img src="images/katha.png" alt="KATHA Logo" class="logo-img">
+    <div>
+      <span class="logo-name">KATHA</span>
+      <span class="logo-tagline">Handmade Crafts &amp; Artisanry</span>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="shop.html" class="active">Shop</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <div class="nav-actions">
+    <div class="nav-search">
+      <i class="fas fa-search"></i>
+      <input type="text" placeholder="Search crafts…"/>
+    </div>
+    <button class="cart-btn" onclick="toggleDrawer()">
+      <i class="fas fa-shopping-bag"></i>
+      <span class="cart-count" id="cartCount">0</span>
+    </button>
+  </div>
+</nav>
+
+<div class="wrap">
+  <div class="detail-breadcrumb">
+    <span onclick="window.location.href='index.html'">Home</span>
+    <span class="sep">/</span>
+    <span onclick="window.location.href='shop.html'">Shop</span>
+    <span class="sep">/</span>
+    <span class="cur" id="detailBreadName">Product</span>
+  </div>
+  <div class="detail-grid">
+    <div class="detail-imgs">
+      <div class="detail-main-img"><img id="detailMainImg" src="" alt=""/></div>
+      <div class="detail-thumbs" id="detailThumbs"></div>
+    </div>
+    <div class="detail-info">
+      <span class="detail-badge" id="detailBadge">New</span>
+      <div class="detail-category" id="detailCategory"></div>
+      <h1 class="detail-name" id="detailName"></h1>
+      <div class="detail-rating-row">
+        <span class="detail-stars" id="detailStars"></span>
+        <span class="detail-rating-text" id="detailRatingText"></span>
+      </div>
+      <div class="detail-price-row">
+        <span class="detail-old-price" id="detailOldPrice"></span>
+        <span class="detail-price" id="detailPrice"></span>
+      </div>
+      <p class="detail-desc" id="detailDesc"></p>
+      <div class="detail-section-label">Materials Used</div>
+      <div class="detail-materials" id="detailMaterials"></div>
+      <div class="detail-section-label">Quantity</div>
+      <div class="detail-qty-row">
+        <div class="qty-control">
+          <button onclick="changeDetailQty(-1)">−</button>
+          <span id="detailQty">1</span>
+          <button onclick="changeDetailQty(1)">+</button>
+        </div>
+        <span style="font-size:0.76rem;color:var(--green);letter-spacing:1px;">✓ In Stock</span>
+      </div>
+      <div class="detail-actions">
+        <button class="detail-add-cart" onclick="addDetailToCart()">Add to Cart</button>
+        <button class="detail-wishlist-btn" onclick="toggleDetailWish(this)"><i class="far fa-heart"></i></button>
+      </div>
+      <div class="detail-meta">
+        <div>SKU: <span id="detailSKU"></span></div>
+        <div>Category: <span id="detailMetaCat"></span></div>
+        <div>Ships within: <span>3–5 business days</span></div>
+      </div>
+      <div class="detail-tabs">
+        <div class="tab-btns">
+          <button class="tab-btn active" data-tab="desc" onclick="switchTab('desc')">Description</button>
+          <button class="tab-btn" data-tab="care" onclick="switchTab('care')">Concept</button>
+          <button class="tab-btn" data-tab="reviews" onclick="switchTab('reviews')">Reviews</button>
+        </div>
+        <div class="tab-content active" id="tab-desc"><p id="detailLongDesc"></p></div>
+        <div class="tab-content" id="tab-care"><p id="detailConcept"></p></div>
+        </div>
+        <div class="tab-content" id="tab-reviews">
+          <div class="review-item">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section class="related-section">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="section-eyebrow">You May Also Like</span>
+      <h2 class="section-title">Related Products</h2>
+    </div>
+    <div class="product-grid" id="relatedGrid"></div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-bottom"><span>© 2025 KATHA Handmade Crafts. All rights reserved.</span></div>
+  </div>
+</footer>
+
+<!-- CART DRAWER -->
+<div class="cart-overlay" id="cartOverlay" onclick="toggleDrawer()"></div>
+<div class="cart-drawer" id="cartDrawer">
+  <div class="cart-head"><div><h3>Your Bag</h3></div><button class="close-cart" onclick="toggleDrawer()"><i class="fas fa-times"></i></button></div>
+  <div class="cart-drawer-items" id="drawerItems"><div class="cart-drawer-empty" id="drawerEmpty"><i class="fas fa-shopping-bag"></i><p>Your bag is empty.</p></div></div>
+  <div class="cart-drawer-foot">
+    <div class="cdf-row"><span>Subtotal</span><span id="drawerSubtotal">₱0</span></div>
+    <div class="cdf-row"><span>Shipping</span><span id="drawerShipping">₱0</span></div>
+    <div class="cdf-total"><span>Total</span><span id="drawerTotal">₱0</span></div>
+    <button class="cdf-checkout" onclick="window.location.href='cart.html'">View Full Cart</button>
+    <button class="cdf-view-cart" onclick="toggleDrawer()">Continue Shopping</button>
+  </div>
+</div>
+
+<div class="toast" id="toast"><i class="fas fa-check-circle"></i><span id="toastMsg"></span></div>
+
+<script src="js/products.js"></script>
+<script src="js/cart.js"></script>
+<script src="js/ui.js"></script>
+<script src="js/product.js"></script>
+</body>
+</html>

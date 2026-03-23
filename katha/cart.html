@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Cart — KATHA</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+<link rel="stylesheet" href="css/main.css"/>
+<link rel="stylesheet" href="css/cart.css"/>
+</head>
+<body>
+
+<div class="top-bar">✦ &nbsp; Free shipping on orders over ₱1,500 &nbsp;·&nbsp; Handcrafted with love in the Philippines &nbsp; ✦</div>
+
+<nav>
+  <a class="nav-logo" href="index.html">
+     <img src="images/katha.png" alt="KATHA Logo" class="logo-img">
+    <div>
+      <span class="logo-name">KATHA</span>
+      <span class="logo-tagline">Handmade Crafts &amp; Artisanry</span>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="shop.html">Shop</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <div class="nav-actions">
+    <div class="nav-search">
+      <i class="fas fa-search"></i>
+      <input type="text" placeholder="Search crafts…"/>
+    </div>
+    <button class="cart-btn" onclick="toggleDrawer()">
+      <i class="fas fa-shopping-bag"></i>
+      <span class="cart-count" id="cartCount">0</span>
+    </button>
+  </div>
+</nav>
+
+<div class="cart-page-hero">
+  <div class="shop-hero-waves"></div>
+  <div class="wrap cart-page-hero-content">
+    <h1>Your Shopping Bag</h1>
+    <div class="breadcrumb" style="justify-content:center;">
+      <span onclick="window.location.href='index.html'">Home</span><span class="sep">/</span>
+      <span class="cur">Cart</span>
+    </div>
+  </div>
+</div>
+
+<div class="cart-body">
+  <div class="wrap">
+    <div class="cart-layout">
+      <div>
+        <div class="cart-table">
+          <div class="cart-table-head">
+            <span>Product</span><span>Price</span><span>Quantity</span><span>Subtotal</span><span></span>
+          </div>
+          <div id="cartPageRows">
+            <div class="cart-empty-msg" id="cartEmptyMsg">
+              <i class="fas fa-shopping-bag"></i>
+              <h3>Your bag is empty</h3>
+              <p>Looks like you haven't added anything yet.</p>
+              <a href="shop.html" class="btn-primary">Start Shopping</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="cart-summary">
+        <h3>Order Summary</h3>
+        <div class="promo-code">
+          <input type="text" placeholder="Promo code"/>
+          <button onclick="showToast('✓ Code applied!')">Apply</button>
+        </div>
+        <div class="summary-row"><span>Subtotal</span><span id="cartPageSubtotal">₱0</span></div>
+        <div class="summary-row"><span>Shipping</span><span id="cartPageShipping">₱0</span></div>
+        <div class="summary-row"><span>Discount</span><span>—</span></div>
+        <div class="summary-total"><span>Total</span><span id="cartPageTotal">₱0</span></div>
+        <button class="checkout-btn" onclick="showToast('🛒 Proceeding to checkout…')">Proceed to Checkout</button>
+        <a href="shop.html" class="continue-shopping" style="display:block;text-align:center;text-decoration:none;">Continue Shopping</a>
+        <div class="payment-badges">
+          <span class="payment-badge">GCash</span><span class="payment-badge">Maya</span>
+          <span class="payment-badge">Visa</span><span class="payment-badge">PayPal</span>
+          <span class="payment-badge">COD</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-bottom"><span>© 2025 KATHA Handmade Crafts. All rights reserved.</span></div>
+  </div>
+</footer>
+
+<!-- CART DRAWER -->
+<div class="cart-overlay" id="cartOverlay" onclick="toggleDrawer()"></div>
+<div class="cart-drawer" id="cartDrawer">
+  <div class="cart-head"><div><h3>Your Bag</h3></div><button class="close-cart" onclick="toggleDrawer()"><i class="fas fa-times"></i></button></div>
+  <div class="cart-drawer-items" id="drawerItems"><div class="cart-drawer-empty" id="drawerEmpty"><i class="fas fa-shopping-bag"></i><p>Your bag is empty.</p></div></div>
+  <div class="cart-drawer-foot">
+    <div class="cdf-row"><span>Subtotal</span><span id="drawerSubtotal">₱0</span></div>
+    <div class="cdf-row"><span>Shipping</span><span id="drawerShipping">₱0</span></div>
+    <div class="cdf-total"><span>Total</span><span id="drawerTotal">₱0</span></div>
+    <button class="cdf-checkout" onclick="toggleDrawer()">View Full Cart</button>
+    <button class="cdf-view-cart" onclick="toggleDrawer()">Continue Shopping</button>
+  </div>
+</div>
+
+<div class="toast" id="toast"><i class="fas fa-check-circle"></i><span id="toastMsg"></span></div>
+
+<script src="js/products.js"></script>
+<script src="js/cart.js"></script>
+<script src="js/ui.js"></script>
+<script>
+// Render cart table on page load
+function renderCartPage() {
+  const subtotal = cart.reduce((s, i) => s + i.price * i.qty, 0);
+  const shipping = subtotal >= 1500 ? 0 : (subtotal > 0 ? 150 : 0);
+  document.getElementById("cartPageSubtotal").innerHTML = "&#8369;" + subtotal.toLocaleString();
+  document.getElementById("cartPageShipping").innerHTML = shipping === 0 && subtotal > 0 ? "FREE" : "&#8369;" + shipping.toLocaleString();
+  document.getElementById("cartPageTotal").innerHTML = "&#8369;" + (subtotal + shipping).toLocaleString();
+  const rowsEl = document.getElementById("cartPageRows");
+  const emptyMsg = document.getElementById("cartEmptyMsg");
+  [...rowsEl.querySelectorAll(".cart-table-row")].forEach(e => e.remove());
+  if (cart.length === 0) { emptyMsg.style.display = ""; return; }
+  emptyMsg.style.display = "none";
+  cart.forEach(item => {
+    const row = document.createElement("div");
+    row.className = "cart-table-row";
+    row.innerHTML = `
+      <div class="cart-product-cell">
+        <img class="cart-product-img" src="${item.img}" alt="${item.name}"/>
+        <div><div class="cart-product-name">${item.name}</div><div class="cart-product-cat">&#8369;${item.price.toLocaleString()} each</div></div>
+      </div>
+      <div class="cart-price-cell">&#8369;${item.price.toLocaleString()}</div>
+      <div class="cart-qty-cell">
+        <button onclick="changeCartQty(${item.id},-1); renderCartPage();">−</button>
+        <span>${item.qty}</span>
+        <button onclick="changeCartQty(${item.id},1); renderCartPage();">+</button>
+      </div>
+      <div class="cart-subtotal-cell">&#8369;${(item.price * item.qty).toLocaleString()}</div>
+      <div class="cart-remove-cell"><button onclick="removeFromCart(${item.id})"><i class="fas fa-trash"></i></button></div>`;
+    rowsEl.appendChild(row);
+  });
+}
+document.addEventListener("DOMContentLoaded", renderCartPage);
+</script>
+</body>
+</html>

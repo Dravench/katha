@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Contact — KATHA</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+<link rel="stylesheet" href="css/main.css"/>
+<link rel="stylesheet" href="css/contact.css"/>
+</head>
+<body>
+
+<div class="top-bar">✦ &nbsp; Free shipping on orders over ₱1,500 &nbsp;·&nbsp; Handcrafted with love in the Philippines &nbsp; ✦</div>
+
+<nav>
+  <a class="nav-logo" href="index.html">
+     <img src="images/katha.png" alt="KATHA Logo" class="logo-img">
+    <div>
+      <span class="logo-name">KATHA</span>
+      <span class="logo-tagline">Handmade Crafts &amp; Artisanry</span>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="shop.html">Shop</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="contact.html" class="active">Contact</a></li>
+  </ul>
+  <div class="nav-actions">
+    <div class="nav-search">
+      <i class="fas fa-search"></i>
+      <input type="text" placeholder="Search crafts…"/>
+    </div>
+    <button class="cart-btn" onclick="toggleDrawer()">
+      <i class="fas fa-shopping-bag"></i>
+      <span class="cart-count" id="cartCount">0</span>
+    </button>
+  </div>
+</nav>
+
+<div class="contact-hero">
+  <div class="wrap">
+    <h1>Get in Touch</h1>
+    <p>We'd love to hear from you — questions, custom orders, or just saying hello.</p>
+    <div class="breadcrumb" style="justify-content:center;margin-top:12px;">
+      <span onclick="window.location.href='index.html'">Home</span><span class="sep">/</span>
+      <span class="cur">Contact</span>
+    </div>
+  </div>
+</div>
+
+<div class="contact-body">
+  <div class="wrap">
+    <div class="contact-grid">
+      <div class="contact-info">
+        <h3>Let's Connect</h3>
+        <p>Have a question about an order, a custom piece you have in mind, or just want to know more about our artisans? We're here.</p>
+        <div class="contact-item"><div class="contact-icon"><i class="fas fa-envelope"></i></div><div class="contact-item-text"><strong>Email</strong><span>hello@katha.ph</span></div></div>
+        <div class="contact-item"><div class="contact-icon"><i class="fas fa-phone"></i></div><div class="contact-item-text"><strong>Phone / Viber</strong><span>+63 917 123 4567</span></div></div>
+        <div class="contact-item"><div class="contact-icon"><i class="fab fa-instagram"></i></div><div class="contact-item-text"><strong>Instagram</strong><span>@katha.crafts</span></div></div>
+        <div class="contact-item"><div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div><div class="contact-item-text"><strong>Location</strong><span>Polangui, Albay, Philippines</span></div></div>
+        <div class="contact-item"><div class="contact-icon"><i class="fas fa-clock"></i></div><div class="contact-item-text"><strong>Business Hours</strong><span>Mon–Sat, 9:00 AM – 6:00 PM</span></div></div>
+      </div>
+      <div class="contact-form">
+        <h3>Send Us a Message</h3>
+        <div class="form-row">
+          <div class="form-group"><label>First Name</label><input type="text" placeholder="Ana"/></div>
+          <div class="form-group"><label>Last Name</label><input type="text" placeholder="Santos"/></div>
+        </div>
+        <div class="form-group"><label>Email Address</label><input type="email" placeholder="ana@email.com"/></div>
+        <div class="form-group"><label>Subject</label>
+          <select>
+            <option>General Inquiry</option>
+            <option>Order Status</option>
+            <option>Custom Order Request</option>
+            <option>Returns &amp; Exchanges</option>
+            <option>Wholesale / Bulk</option>
+          </select>
+        </div>
+        <div class="form-group"><label>Message</label><textarea placeholder="Tell us how we can help…"></textarea></div>
+        <button class="form-submit" onclick="showToast('✓ Message sent! We will reply within 24 hours.')">Send Message</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-bottom"><span>© 2025 KATHA Handmade Crafts. All rights reserved.</span><span>Privacy Policy &nbsp;·&nbsp; Terms of Service</span></div>
+  </div>
+</footer>
+
+<!-- CART DRAWER -->
+<div class="cart-overlay" id="cartOverlay" onclick="toggleDrawer()"></div>
+<div class="cart-drawer" id="cartDrawer">
+  <div class="cart-head"><div><h3>Your Bag</h3></div><button class="close-cart" onclick="toggleDrawer()"><i class="fas fa-times"></i></button></div>
+  <div class="cart-drawer-items" id="drawerItems"><div class="cart-drawer-empty" id="drawerEmpty"><i class="fas fa-shopping-bag"></i><p>Your bag is empty.</p></div></div>
+  <div class="cart-drawer-foot">
+    <div class="cdf-row"><span>Subtotal</span><span id="drawerSubtotal">₱0</span></div>
+    <div class="cdf-row"><span>Shipping</span><span id="drawerShipping">₱0</span></div>
+    <div class="cdf-total"><span>Total</span><span id="drawerTotal">₱0</span></div>
+    <button class="cdf-checkout" onclick="window.location.href='cart.html'">View Full Cart</button>
+    <button class="cdf-view-cart" onclick="toggleDrawer()">Continue Shopping</button>
+  </div>
+</div>
+
+<div class="toast" id="toast"><i class="fas fa-check-circle"></i><span id="toastMsg"></span></div>
+
+<script src="js/products.js"></script>
+<script src="js/cart.js"></script>
+<script src="js/ui.js"></script>
+</body>
+</html>
